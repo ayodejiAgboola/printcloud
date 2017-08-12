@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PrintCloud</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="../../css/main.css" />
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">PrintCloud</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="starter-template">
+        <h1>Upload your document</h1>
+    </div>
+</div>
+
+<form class="form-horizontal" method="POST" action="/upload" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+    <input type="file" name="file" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <input type="text" id="name" name="name" placeholder="name" class="form-control" required="true" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <textarea placeholder="Additional specifications" id="specs" name="specs" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <button type="submit" class="btn btn-success">Upload</button>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
