@@ -1,5 +1,8 @@
 package com.printcloud.controller;
 
+import com.printcloud.dao.FilesDao;
+import com.printcloud.model.File;
+import com.printcloud.model.UploadRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,11 +14,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 
 @Controller
 public class UploadController {
-
+private FilesDao filesDao;
     //Save the uploaded file to this folder
+    public UploadController(FilesDao filesDao){
+        this.filesDao=filesDao;
+    }
     private static String UPLOADED_FOLDER = "src\\main\\resources\\files\\";
 
     @GetMapping("/")
@@ -24,7 +31,7 @@ public class UploadController {
     }
 
     @PostMapping("/upload") // //new annotation since 4.3
-    public String singleFileUpload(@RequestParam("file") MultipartFile file,
+    public String singleFileUpload(@RequestParam("file") MultipartFile file, UploadRequest request,
                                    RedirectAttributes redirectAttributes) {
 
         if (file.isEmpty()) {
@@ -39,7 +46,18 @@ public class UploadController {
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             System.out.println(path.toAbsolutePath());
             Files.write(path, bytes);
-
+            File fileToDb = new File();
+            fileToDb.setFileName(file.getOriginalFilename());
+            fileToDb.setFilePath(path.toAbsolutePath().toString());
+            fileToDb.setFileType(file.getContentType());
+            fileToDb.setUploadDate(new Date().toString());
+            fileToDb.setPickupDate(request.getPickupDate());
+            fileToDb.setColor(request.getColor());
+            fileToDb.setSides(request.getSides());
+            fileToDb.setSpecs(request.getSpecs());
+            fileToDb.setOwnerName(request.getName());
+            fileToDb.setOwnerEmail(request.getEmail());
+            filesDao.save(fileToDb);
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
 
