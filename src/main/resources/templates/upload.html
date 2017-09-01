@@ -9,7 +9,30 @@
 
     <link rel="stylesheet" th:href="@{/css/main.css}"
           href="../../css/main.css" />
-
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="../../css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <!-- font-awesome icons -->
+    <link href="../../css/font-awesome.css" rel="stylesheet"/>
+    <!-- js-->
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/modernizr.custom.js"></script>
+    <!--webfonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'/>
+    <!--//webfonts-->
+    <!--animate-->
+    <link href="../../css/animate.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="../../js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+    <!-- Metis Menu -->
+    <script src="../../js/metisMenu.min.js"></script>
+    <script src="../../js/custom.js"></script>
+    <link href="../../css/custom.css" rel="stylesheet"/>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -19,6 +42,76 @@
         </div>
     </div>
 </nav>
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="forms">
+            <div class="row">
+                <h3 class="title1">Welcome to CloudPrint!</h3>
+                <div class="form-three widget-shadow">
+                    <form class="form-horizontal" action="/upload" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="name" name="name" placeholder="Name" required="true" class="form-control1"/>
+                            </div>
+                            <!--<div class="col-sm-2">
+                                <p class="help-block">Your help text!</p>
+                            </div>-->
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email Address</label>
+                            <div class="col-sm-8">
+                                <input type="email" id="email" name="email" placeholder="e-mail address" required="true" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-2 control-label">Email Address</label>
+                            <div class="col-sm-8">
+                                <input type="number" id="phone" name="phone" placeholder="Phone Number" required="true" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file" class="col-sm-2 control-label">Upload Document</label>
+                            <div class="col-sm-8">
+                                <input type="file" name="file" id="file" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="radio-color" class="col-sm-2 control-label">Document Color</label>
+                            <div class="col-sm-8" id="radio-color">
+                                <div class="radio block"><input type="radio" name="color" value="black" /> Black and White   <input type="radio" name="color" value="color"/> Colored<br/><br/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="radio-sides" class="col-sm-2 control-label">Page Properties</label>
+                            <div class="col-sm-8">
+                                <div class="radio-block" id="radio-sides">
+                                    <input type="radio" name="sides" value="one" /> One Sided   <input type="radio" name="sides" value="two"/> Both Sides<br/><br/></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date" class="col-sm-2 control-label label-input-sm">Pick Up Date</label>
+                            <div class="col-sm-8" id="date">
+                                <input type="datetime-local" name="pickupDate" required="true" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-8">
+                                <textarea placeholder="Additional specifications" id="specs" name="specs" class="form-control" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--<button type="submit" class="btn btn-success">Upload</button>
+</form>
 <div class="container">
     <div class="starter-template">
         <h1>Upload your document</h1>
@@ -28,27 +121,20 @@
 <form class="form-horizontal" method="POST" action="/upload" enctype="multipart/form-data">
     <div class="form-group">
         <div class="col-sm-9 col-sm-offset-3">
-    <input type="file" name="file" />
+
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-9 col-sm-offset-3" style="width: 30%">
-            <input type="text" id="name" name="name" placeholder="name" required="true" class="form-control"/>
+
             <br/>
-            <input type="email" id="email" name="email" placeholder="e-mail address" required="true" class="form-control"/>
-            <br/>
-            <input type="radio" name="color" value="black" /> Black and White   <input type="radio" name="color" value="color"/> Colored<br/><br/>
-            <input type="radio" name="sides" value="one" /> One Sided   <input type="radio" name="sides" value="two"/> Both Sides<br/><br/>
+
+
             Pick up time: <br/>
-            <input type="datetime-local" name="pickupDate" required="true" class="form-control" /> <br/>
+             <br/>
             <textarea placeholder="Additional specifications" id="specs" name="specs" class="form-control" />
             <br/>
 
-            <button type="submit" class="btn btn-success">Upload</button>
-        </div>
-    </div>
-    <!--<div class="form-group">
-        <div class="col-sm-9 col-sm-offset-3">
 
         </div>
     </div>-->
@@ -57,7 +143,15 @@
 
         </div>
     </div>-->
-</form>
+    <!--<div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
 
+        </div>
+    </div>-->
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+<!--//scrolling js-->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.js"> </script>
 </body>
 </html>
