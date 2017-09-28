@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PrintCloud</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="../../css/main.css" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="../../css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <!-- font-awesome icons -->
+    <link href="../../css/font-awesome.css" rel="stylesheet"/>
+    <!-- js-->
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/modernizr.custom.js"></script>
+    <!--webfonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'/>
+    <!--//webfonts-->
+    <!--animate-->
+    <link href="../../css/animate.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="../../js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+    <!-- Metis Menu -->
+    <script src="../../js/metisMenu.min.js"></script>
+    <script src="../../js/custom.js"></script>
+    <link href="../../css/custom.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">CloudPrint</a>
+        </div>
+    </div>
+</nav>
+<div id="page-wrapper">
+    <div class="main-page login-page ">
+        <div class="widget-shadow">
+            <div class="login-top">
+                <h4>Sign in to the Admin Portal</h4>
+            </div>
+            <div class="login-body">
+<form action="/signin" method="post">
+    <input type="text" class="user" name="username" id="username" placeholder="Enter your username" required="true"/>
+    <input type="password" name="password" id="password" class="lock" placeholder="password" required="true"/>
+    <button type="submit" class="btn btn-success">Login</button>
+    <div class="forgot-grid">
+        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""/><i></i>Remember me</label>
+        <div class="forgot">
+            <a href="#">forgot password?</a>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</form>
+ </div>
+</div>
+</div>
+</div>
+
+<!--scrolling js-->
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+<!--//scrolling js-->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.js"> </script>
+</body>
+</html>

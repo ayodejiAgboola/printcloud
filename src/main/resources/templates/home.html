@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PrintCloud</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="../../css/main.css" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="../../css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <!-- font-awesome icons -->
+    <link href="../../css/font-awesome.css" rel="stylesheet"/>
+    <!-- js-->
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/modernizr.custom.js"></script>
+    <!--webfonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'/>
+    <!--//webfonts-->
+    <!--animate-->
+    <link href="../../css/animate.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="../../js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+    <!-- Metis Menu -->
+    <script src="../../js/metisMenu.min.js"></script>
+    <script src="../../js/custom.js"></script>
+    <link href="../../css/custom.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">CloudPrint</a>
+        </div>
+    </div>
+</nav>
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="table">
+            <div class="panel-body widget-shadow">
+                <h4>Pending Jobs:</h4>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Owner Name</th>
+                        <th>Owner Email</th>
+                        <th>Owner Phone Number</th>
+                        <th>Pick Up Date</th>
+                        <th>Specs</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${pendingJobs!=null}" th:each="pendingJob:${pendingJobs}">
+                    <td th:text="${pendingJob.ownerName}"></td>
+                    <td th:text="${pendingJob.ownerEmail}"></td>
+                    <td th:text="${pendingJob.ownerPhone}"></td>
+                    <td th:text="${pendingJob.pickupDate}"></td>
+                    <td th:text="${pendingJob.color+' '+pendingJob.sides+' '+pendingJob.specs}"></td>
+                    <td>
+                        <a th:href="@{/files(fileid=${pendingJob.id})}" th:text="Download" > </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/update/${pendingJob.id}}" th:text="Update" > </a>
+                    </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<h1>Spring Boot - Upload Status</h1>
+
+<form method="get" action="/admin/files/59beb250b69abdbf6ce16c88">
+    <button type="submit">Download!</button>
+</form>-->
+<script src="js/classie.js"></script>
+<script>
+    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+        showLeftPush = document.getElementById( 'showLeftPush' ),
+        body = document.body;
+
+    showLeftPush.onclick = function() {
+        classie.toggle( this, 'active' );
+        classie.toggle( body, 'cbp-spmenu-push-toright' );
+        classie.toggle( menuLeft, 'cbp-spmenu-open' );
+        disableOther( 'showLeftPush' );
+    };
+
+    function disableOther( button ) {
+        if( button !== 'showLeftPush' ) {
+            classie.toggle( showLeftPush, 'disabled' );
+        }
+    }
+</script>
+<!--scrolling js-->
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+<!--//scrolling js-->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.js"> </script>
+</body>
+</html>

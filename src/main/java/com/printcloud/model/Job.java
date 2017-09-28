@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "files")
-public class File {
+public class Job {
     @Id
     private String id;
     private String fileType;
@@ -18,6 +18,8 @@ public class File {
     private String color;
     private String sides;
     private String specs;
+    private String status;
+    private String ownerPhone;
 
     public String getFileType() {
         return fileType;
@@ -105,5 +107,29 @@ public class File {
 
     public void setSpecs(String specs) {
         this.specs = specs;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getOwnerPhone() {
+        return ownerPhone;
+    }
+
+    public void setOwnerPhone(String ownerPhone) {
+        this.ownerPhone = ownerPhone;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -7,6 +7,7 @@ public class UploadRequest {
     private String sides;
     private String specs;
     private String pickupDate;
+    private String phone;
 
     public String getName() {
         return name;
@@ -54,5 +55,13 @@ public class UploadRequest {
 
     public void setPickupDate(String pickupDate) {
         this.pickupDate = pickupDate;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

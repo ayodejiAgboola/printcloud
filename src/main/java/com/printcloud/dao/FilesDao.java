@@ -1,7 +1,11 @@
 package com.printcloud.dao;
 
-import com.printcloud.model.File;
+import com.printcloud.model.Job;
 import org.springframework.data.repository.CrudRepository;
 
-public interface FilesDao extends CrudRepository<File, String> {
+import java.util.List;
+
+public interface FilesDao extends CrudRepository<Job, String> {
+    List<Job> findByStatus(String status);
+    Job findByFileName(String filename);
 }
