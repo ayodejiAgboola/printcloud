@@ -61,12 +61,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:if="${pendingJobs!=null}" th:each="pendingJob:${pendingJobs}">
+                    <tr th:if="${pendingJobs!=null}" th:each="pendingJob, iterationStatus:${pendingJobs}">
+                    <td th:text="${iterationStatus.count}"></td>
                     <td th:text="${pendingJob.ownerName}"></td>
                     <td th:text="${pendingJob.ownerEmail}"></td>
                     <td th:text="${pendingJob.ownerPhone}"></td>
                     <td th:text="${pendingJob.pickupDate}"></td>
-                    <td th:text="${pendingJob.color+' '+pendingJob.sides+' '+pendingJob.specs}"></td>
+                    <td th:text="${pendingJob.color+', '+pendingJob.sides+', '+pendingJob.specs}"></td>
                     <td>
                         <a th:href="@{/files(fileid=${pendingJob.id})}" th:text="Download" > </a>
                     </td>
