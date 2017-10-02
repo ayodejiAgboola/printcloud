@@ -31,14 +31,24 @@ public class AdminController {
     }
     @GetMapping("/home")
     public String home(HttpSession session){
-
-                return "home";
+        return checkLoginStatus(session);
     }
     @GetMapping("/login")
-    public String login(){
-
+    public String login(HttpSession session){
+        return checkLoginStatus(session);
+    }
+    private String checkLoginStatus(HttpSession session){
+        try {
+            Boolean bool = Boolean.getBoolean(session.getAttribute("loginStatus").toString());
+            if(bool){
+                return "home";
+            }else{
                 return "login";
-
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+            return "login";
+        }
     }
     @PostMapping("/register")
     public String register(@RequestBody User request){
